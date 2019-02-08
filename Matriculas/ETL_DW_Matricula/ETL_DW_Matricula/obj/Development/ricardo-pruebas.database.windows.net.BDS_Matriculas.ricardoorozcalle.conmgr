@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ricardo-pruebas.database.windows.net.BDS_Matriculas.ricardoorozcalle"
+  DTS:DTSID="{A72D6889-337D-4E51-B2AB-A5CB7A2E40FA}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=ricardo-pruebas.database.windows.net;User ID=ricardoorozcalle;Initial Catalog=BDS_Matriculas;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQ07fthBNjUya/sNspWQ53gAAAAACAAAAAAAQZgAAAAEAACAAAACxVCbS/p9tk2ytD0AVi7SlHkciBQivVhRTya6IQ0ZuUgAAAAAOgAAAAAIAACAAAADKqb2MzSbrXTr6v8GvRL8sDXgZR8VzCxZ3rCKrAV00IYAAAAAF2pV+zmAaterZkT4XsnYGYK40k07Aer6mTdwW68LdcAPRqNoKCmP4pOzDflh5jj7Kf6EnN9BEhJwiUrasNPmpl9Q02xq7kXgr5A61qsV0OZmWFocOToOAA4bwN/toz3s5eCUof7K4d/U+MpGKm6kBgFNjtlwu9ToM7dwVNMctPUAAAABOpGIQ67WxJiNMNAft4R7UjJCaxTPtzZqVYVJAIJCsR0gP6w//KNKAZyv9RsV1a/iZfTmMvFOI2fPe5fhMyJSy</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

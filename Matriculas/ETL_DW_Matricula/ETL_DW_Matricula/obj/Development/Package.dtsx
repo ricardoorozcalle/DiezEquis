@@ -1,0 +1,1670 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/25/2019 2:28:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HELLRED"
+  DTS:CreatorName="HELLRED\Ricardo"
+  DTS:DTSID="{E0872A55-08DE-4B1A-8C56-98E1A50488FB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="9226"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{F162B96E-D280-460B-A107-823ED8190846}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CARGAR DIM_CURSO"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{B5FC19E0-E7EB-4A2F-9D6D-58520F7E4446}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CARGAR DIM_CURSO"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\CARGAR DIM_CURSO\Copiar columna"
+              componentClassID="Microsoft.CopyMap"
+              contactInfo="Copiar columna;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Copia columnas de entrada en nuevas columnas de la salida de transformación. Por ejemplo, se crea una copia de la columna 'dirección' de modo que se pueda limpiar en transformaciones subsiguientes y se mantiene la columna original para las auditorías."
+              name="Copiar columna">
+              <inputs>
+                <input
+                  refId="Package\CARGAR DIM_CURSO\Copiar columna.Inputs[Entrada de Copiar columna]"
+                  name="Entrada de Copiar columna">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CARGAR DIM_CURSO\Copiar columna.Outputs[Salida de Copiar columna]"
+                  name="Salida de Copiar columna"
+                  synchronousInputId="Package\CARGAR DIM_CURSO\Copiar columna.Inputs[Entrada de Copiar columna]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CARGAR DIM_CURSO\Destino de OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino de OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[DIM_CURSO]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{68FE0121-2613-4950-9F93-EBAB576295C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ricardo-pruebas.database.windows.net.DW_Matriculas.ricardoorozcalle]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[CUR_Identificador]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="CUR_Identificador"
+                      externalMetadataColumnId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CUR_Codigo]"
+                      lineageId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUR_Identificador]" />
+                    <inputColumn
+                      refId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[CUR_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="CUR_Nombre"
+                      externalMetadataColumnId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CUR_NombreCurso]"
+                      lineageId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUR_Nombre]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CUR_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="CUR_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CUR_NombreCurso]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="CUR_NombreCurso" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CARGAR DIM_CURSO\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        CUR_Identificador, CUR_Nombre
+FROM            TBL_Curso</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{A72D6889-337D-4E51-B2AB-A5CB7A2E40FA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ricardo-pruebas.database.windows.net.BDS_Matriculas.ricardoorozcalle]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUR_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CUR_Identificador]"
+                      length="6"
+                      lineageId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUR_Identificador]"
+                      name="CUR_Identificador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUR_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CUR_Nombre]"
+                      length="40"
+                      lineageId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[CUR_Nombre]"
+                      name="CUR_Nombre"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CUR_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="CUR_Identificador" />
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[CUR_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="CUR_Nombre" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CUR_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CUR_Identificador]"
+                      name="CUR_Identificador" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CUR_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[CUR_Nombre]"
+                      name="CUR_Nombre" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\CARGAR DIM_CURSO.Paths[Salida de Copiar columna]"
+              endId="Package\CARGAR DIM_CURSO\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de Copiar columna"
+              startId="Package\CARGAR DIM_CURSO\Copiar columna.Outputs[Salida de Copiar columna]" />
+            <path
+              refId="Package\CARGAR DIM_CURSO.Paths[Salida de origen de OLE DB]"
+              endId="Package\CARGAR DIM_CURSO\Copiar columna.Inputs[Entrada de Copiar columna]"
+              name="Salida de origen de OLE DB"
+              startId="Package\CARGAR DIM_CURSO\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CARGAR DIM_ESTUDIANTE"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{79DF6A72-E3FA-499E-9556-2C1855A38480}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CARGAR DIM_ESTUDIANTE"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\CARGAR DIM_ESTUDIANTE\Copiar columna"
+              componentClassID="Microsoft.CopyMap"
+              contactInfo="Copiar columna;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Copia columnas de entrada en nuevas columnas de la salida de transformación. Por ejemplo, se crea una copia de la columna 'dirección' de modo que se pueda limpiar en transformaciones subsiguientes y se mantiene la columna original para las auditorías."
+              name="Copiar columna">
+              <inputs>
+                <input
+                  refId="Package\CARGAR DIM_ESTUDIANTE\Copiar columna.Inputs[Entrada de Copiar columna]"
+                  name="Entrada de Copiar columna">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CARGAR DIM_ESTUDIANTE\Copiar columna.Outputs[Salida de Copiar columna]"
+                  name="Salida de Copiar columna"
+                  synchronousInputId="Package\CARGAR DIM_ESTUDIANTE\Copiar columna.Inputs[Entrada de Copiar columna]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino de OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[DIM_ESTUDIANTE]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{68FE0121-2613-4950-9F93-EBAB576295C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ricardo-pruebas.database.windows.net.DW_Matriculas.ricardoorozcalle]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[EST_Identificador]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="EST_Identificador"
+                      externalMetadataColumnId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[EST_Identificador]"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EST_Identificador]" />
+                    <inputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[EST_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="EST_Nombre"
+                      externalMetadataColumnId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[EST_Nombre]"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EST_Nombre]" />
+                    <inputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[EST_Apellidos]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="EST_Apellidos"
+                      externalMetadataColumnId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[EST_Apellidos]"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EST_Apellidos]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[EST_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="EST_Identificador" />
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[EST_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="EST_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[EST_Apellidos]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="EST_Apellidos" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[TBL_Estudiante]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        EST_Identificador, EST_Nombre, EST_Apellidos
+FROM            TBL_Estudiante</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{A72D6889-337D-4E51-B2AB-A5CB7A2E40FA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ricardo-pruebas.database.windows.net.BDS_Matriculas.ricardoorozcalle]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EST_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EST_Identificador]"
+                      length="10"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EST_Identificador]"
+                      name="EST_Identificador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EST_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EST_Nombre]"
+                      length="20"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EST_Nombre]"
+                      name="EST_Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EST_Apellidos]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EST_Apellidos]"
+                      length="30"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EST_Apellidos]"
+                      name="EST_Apellidos"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EST_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="EST_Identificador" />
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EST_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="EST_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EST_Apellidos]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="EST_Apellidos" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EST_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EST_Identificador]"
+                      name="EST_Identificador" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EST_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EST_Nombre]"
+                      name="EST_Nombre" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EST_Apellidos]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EST_Apellidos]"
+                      name="EST_Apellidos" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\CARGAR DIM_ESTUDIANTE.Paths[Salida de Copiar columna]"
+              endId="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de Copiar columna"
+              startId="Package\CARGAR DIM_ESTUDIANTE\Copiar columna.Outputs[Salida de Copiar columna]" />
+            <path
+              refId="Package\CARGAR DIM_ESTUDIANTE.Paths[Salida de origen de OLE DB]"
+              endId="Package\CARGAR DIM_ESTUDIANTE\Copiar columna.Inputs[Entrada de Copiar columna]"
+              name="Salida de origen de OLE DB"
+              startId="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{F2A9B5AB-98C3-4B29-BDFD-095CDC407766}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna"
+              componentClassID="Microsoft.CopyMap"
+              contactInfo="Copiar columna;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Copia columnas de entrada en nuevas columnas de la salida de transformación. Por ejemplo, se crea una copia de la columna 'dirección' de modo que se pueda limpiar en transformaciones subsiguientes y se mantiene la columna original para las auditorías."
+              name="Copiar columna">
+              <inputs>
+                <input
+                  refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Inputs[Entrada de Copiar columna]"
+                  name="Entrada de Copiar columna">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Inputs[Entrada de Copiar columna].Columns[TBL_Estudiante_EST_Identificador]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="TBL_Estudiante_EST_Identificador"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Estudiante_EST_Identificador]" />
+                    <inputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Inputs[Entrada de Copiar columna].Columns[MAT_Nota]"
+                      cachedDataType="r4"
+                      cachedName="MAT_Nota"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[MAT_Nota]" />
+                    <inputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Inputs[Entrada de Copiar columna].Columns[TBL_Curso_CUR_Identificador]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="TBL_Curso_CUR_Identificador"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Curso_CUR_Identificador]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Outputs[Salida de Copiar columna]"
+                  name="Salida de Copiar columna"
+                  synchronousInputId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Inputs[Entrada de Copiar columna]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Outputs[Salida de Copiar columna].Columns[Copia de TBL_Estudiante_EST_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Outputs[Salida de Copiar columna].Columns[Copia de TBL_Estudiante_EST_Identificador]"
+                      name="Copia de TBL_Estudiante_EST_Identificador">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna para copiar."
+                          name="copyColumnId">#{Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Estudiante_EST_Identificador]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Outputs[Salida de Copiar columna].Columns[Copia de MAT_Nota]"
+                      dataType="r4"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Outputs[Salida de Copiar columna].Columns[Copia de MAT_Nota]"
+                      name="Copia de MAT_Nota">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna para copiar."
+                          name="copyColumnId">#{Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[MAT_Nota]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Outputs[Salida de Copiar columna].Columns[Copia de TBL_Curso_CUR_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Outputs[Salida de Copiar columna].Columns[Copia de TBL_Curso_CUR_Identificador]"
+                      name="Copia de TBL_Curso_CUR_Identificador">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna para copiar."
+                          name="copyColumnId">#{Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Curso_CUR_Identificador]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino de OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[FACT_ASIGNATURA]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{68FE0121-2613-4950-9F93-EBAB576295C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ricardo-pruebas.database.windows.net.DW_Matriculas.ricardoorozcalle]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[MAT_Nota]"
+                      cachedDataType="r4"
+                      cachedName="MAT_Nota"
+                      externalMetadataColumnId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FACT_NotaEstudiante]"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[MAT_Nota]" />
+                    <inputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[TBL_Estudiante_EST_Identificador]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="TBL_Estudiante_EST_Identificador"
+                      externalMetadataColumnId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FACT_IdentificadorEstudiante]"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Estudiante_EST_Identificador]" />
+                    <inputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[TBL_Curso_CUR_Identificador]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="TBL_Curso_CUR_Identificador"
+                      externalMetadataColumnId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FACT_CodigoCurso]"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Curso_CUR_Identificador]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FACT_CodigoCurso]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="FACT_CodigoCurso" />
+                    <externalMetadataColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FACT_IdentificadorEstudiante]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="FACT_IdentificadorEstudiante" />
+                    <externalMetadataColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FACT_NotaEstudiante]"
+                      dataType="r4"
+                      name="FACT_NotaEstudiante" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        TBL_Matricula.TBL_Estudiante_EST_Identificador, TBL_Matricula.MAT_Nota, TBL_AsignacionDocente.TBL_Curso_CUR_Identificador
+FROM            TBL_Matricula INNER JOIN
+                         TBL_AsignacionDocente ON TBL_Matricula.TBL_AsignacionDocente_ASIG_DOC_Consecutivo = TBL_AsignacionDocente.ASIG_DOC_Consecutivo</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{A72D6889-337D-4E51-B2AB-A5CB7A2E40FA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ricardo-pruebas.database.windows.net.BDS_Matriculas.ricardoorozcalle]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Estudiante_EST_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TBL_Estudiante_EST_Identificador]"
+                      length="10"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Estudiante_EST_Identificador]"
+                      name="TBL_Estudiante_EST_Identificador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[MAT_Nota]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[MAT_Nota]"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[MAT_Nota]"
+                      name="MAT_Nota"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Curso_CUR_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TBL_Curso_CUR_Identificador]"
+                      length="6"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TBL_Curso_CUR_Identificador]"
+                      name="TBL_Curso_CUR_Identificador"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TBL_Estudiante_EST_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TBL_Estudiante_EST_Identificador" />
+                    <externalMetadataColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[MAT_Nota]"
+                      dataType="r4"
+                      name="MAT_Nota" />
+                    <externalMetadataColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TBL_Curso_CUR_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="TBL_Curso_CUR_Identificador" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TBL_Estudiante_EST_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TBL_Estudiante_EST_Identificador]"
+                      name="TBL_Estudiante_EST_Identificador" />
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[MAT_Nota]"
+                      dataType="r4"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[MAT_Nota]"
+                      name="MAT_Nota" />
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TBL_Curso_CUR_Identificador]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TBL_Curso_CUR_Identificador]"
+                      name="TBL_Curso_CUR_Identificador" />
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA.Paths[Salida de Copiar columna]"
+              endId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de Copiar columna"
+              startId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Outputs[Salida de Copiar columna]" />
+            <path
+              refId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA.Paths[Salida de origen de OLE DB]"
+              endId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna.Inputs[Entrada de Copiar columna]"
+              name="Salida de origen de OLE DB"
+              startId="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{75525CB2-B4D1-479D-90E3-46A8BCC05754}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68FE0121-2613-4950-9F93-EBAB576295C9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE FACT_ASIGNATURA&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{068570F4-D241-4E17-9BE2-C403898149A4}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\CARGAR DIM_CURSO" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{203E7D9F-D767-49F2-8BE0-561AD33D5AB7}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\CARGAR DIM_ESTUDIANTE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{EDAE0E4C-3535-4CB7-B777-023DCBA27485}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{5D605D9D-A86C-4882-8ED8-54D34F5F8CAD}"
+      DTS:From="Package\CARGAR DIM_ESTUDIANTE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{7CFE8701-0D15-487A-B87E-3787DD55520F}"
+      DTS:From="Package\CARGAR DIM_CURSO"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="181,42"
+          Id="Package\CARGAR DIM_CURSO"
+          TopLeft="276,152" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\CARGAR DIM_ESTUDIANTE"
+          TopLeft="481,203" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="505.5,32.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="563.5,74.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-197,77.5"
+              Start="0,0"
+              End="-197,70">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.4335664335664" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.4335664335664"
+                    Point2="0,31.4335664335664"
+                    Point3="-4,31.4335664335664" />
+                  <mssgle:LineSegment
+                    End="-193,31.4335664335664" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-193,31.4335664335664"
+                    Point2="-197,31.4335664335664"
+                    Point3="-197,35.4335664335664" />
+                  <mssgle:LineSegment
+                    End="-197,70" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="586,74.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,128.5"
+              Start="0,0"
+              End="0,121">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,121" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="306,42"
+          Id="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA"
+          TopLeft="531,358" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="631,74.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.5,283.5"
+              Start="0,0"
+              End="127.5,276">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.1800126103405" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,83.1800126103405"
+                    Point2="0,87.1800126103405"
+                    Point3="4,87.1800126103405" />
+                  <mssgle:LineSegment
+                    End="123.5,87.1800126103405" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.5,87.1800126103405"
+                    Point2="127.5,87.1800126103405"
+                    Point3="127.5,91.1800126103405" />
+                  <mssgle:LineSegment
+                    End="127.5,276" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="585.5,245">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98.5,113"
+              Start="0,0"
+              End="98.5,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.5"
+                    Point2="0,56.5"
+                    Point3="4,56.5" />
+                  <mssgle:LineSegment
+                    End="94.5,56.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,56.5"
+                    Point2="98.5,56.5"
+                    Point3="98.5,60.5" />
+                  <mssgle:LineSegment
+                    End="98.5,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="366.5,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="175,164"
+              Start="0,0"
+              End="175,156.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,104.388768898488" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,104.388768898488"
+                    Point2="0,108.388768898488"
+                    Point3="4,108.388768898488" />
+                  <mssgle:LineSegment
+                    End="171,108.388768898488" />
+                  <mssgle:CubicBezierSegment
+                    Point1="171,108.388768898488"
+                    Point2="175,108.388768898488"
+                    Point3="175,112.388768898488" />
+                  <mssgle:LineSegment
+                    End="175,156.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\CARGAR DIM_CURSO">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\CARGAR DIM_CURSO\Destino de OLE DB"
+          TopLeft="509,268" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\CARGAR DIM_CURSO\Origen de OLE DB"
+          TopLeft="496,37" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\CARGAR DIM_CURSO\Copiar columna"
+          TopLeft="503,152" />
+        <EdgeLayout
+          Id="Package\CARGAR DIM_CURSO.Paths[Salida de origen de OLE DB]"
+          TopLeft="578.5,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CARGAR DIM_CURSO.Paths[Salida de Copiar columna]"
+          TopLeft="579,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14,74"
+              Start="0,0"
+              End="14,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33"
+                    Point2="0,37"
+                    Point3="4,37" />
+                  <mssgle:LineSegment
+                    End="10,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10,37"
+                    Point2="14,37"
+                    Point3="14,41" />
+                  <mssgle:LineSegment
+                    End="14,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGAR DIM_CURSO\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGAR DIM_CURSO\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\CARGAR DIM_ESTUDIANTE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB"
+          TopLeft="540,239" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\CARGAR DIM_ESTUDIANTE\Copiar columna"
+          TopLeft="537,147" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB"
+          TopLeft="539,55" />
+        <EdgeLayout
+          Id="Package\CARGAR DIM_ESTUDIANTE.Paths[Salida de origen de OLE DB]"
+          TopLeft="621,97">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8,50"
+              Start="0,0"
+              End="-8,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="-4,25" />
+                  <mssgle:LineSegment
+                    End="-4,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,25"
+                    Point2="-8,25"
+                    Point3="-8,29" />
+                  <mssgle:LineSegment
+                    End="-8,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CARGAR DIM_ESTUDIANTE.Paths[Salida de Copiar columna]"
+          TopLeft="613,189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11,50"
+              Start="0,0"
+              End="11,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
+                  <mssgle:LineSegment
+                    End="7,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7,25"
+                    Point2="11,25"
+                    Point3="11,29" />
+                  <mssgle:LineSegment
+                    End="11,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGAR DIM_ESTUDIANTE\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGAR DIM_ESTUDIANTE\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB"
+          TopLeft="518.5,62.5" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Copiar columna"
+          TopLeft="526,181" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB"
+          TopLeft="527,307" />
+        <EdgeLayout
+          Id="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA.Paths[Salida de Copiar columna]"
+          TopLeft="602,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9,84"
+              Start="0,0"
+              End="9,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38"
+                    Point2="0,42"
+                    Point3="4,42" />
+                  <mssgle:LineSegment
+                    End="5,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5,42"
+                    Point2="9,42"
+                    Point3="9,46" />
+                  <mssgle:LineSegment
+                    End="9,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA.Paths[Salida de origen de OLE DB]"
+          TopLeft="601.25,104.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.5"
+              Start="0,0"
+              End="0,69">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EXTRAER NOTAS Y LLENAR FACT_ASIGNATURA\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
